@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdown with Counter Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-button {
+      cursor: pointer;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    .dropdown-content button {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dropdown">
+    <div class="dropdown-button" id="toggleBtn">Adult: <span id="counter">0</span></div>
+    <div class="dropdown-content" id="myDropdown">
+      <div class="border rounded shadow card">
+        <div class="row">
+          <div class="col-6">
+            <div>Adult</div>
+            <div>
+              <button id="increaseBtn">Increase</button>
+              <button id="decreaseBtn">Decrease</button>
+            </div>
+          </div>
+          <div class="col-6">jhhgjgug</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      let counter = 0;
+      const minimum = 0;
+      const maximum = 10;
+
+      $("#increaseBtn").click(function() {
+        if (counter < maximum) {
+          counter++;
+          updateCounter();
+        }
+      });
+
+      $("#decreaseBtn").click(function() {
+        if (counter > minimum) {
+          counter--;
+          updateCounter();
+        }
+      });
+
+      function updateCounter() {
+        $("#counter").text(counter);
+      }
+
+      $("#toggleBtn").click(function() {
+        $("#myDropdown").toggle();
+      });
+    });
+  </script>
+</body>
+</html>
